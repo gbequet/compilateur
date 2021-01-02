@@ -1,0 +1,12 @@
+program p
+  var a: int;
+  var b: int;
+  begin
+    a := 6;
+    b := 2;
+    
+    write 19 / 2;
+    write a/2;
+    write 30/a;
+    write a/b;
+  end

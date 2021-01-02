@@ -1,0 +1,13 @@
+(* exempl*e de com(*mentai*re **)
+
+program p
+    var i: int;
+    var a: bool;
+    var b: int
+
+    begin
+       i := 2;
+       a := true;
+       b := i - a;
+       write b
+    end

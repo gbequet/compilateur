@@ -1,0 +1,20 @@
+program p
+    var a, b: int
+
+    function f(x : int, y : int) : int
+    begin
+        write x;
+        write y;
+    end;
+
+    function g(u : int, v : int) : int
+    begin
+        write u;
+        write v;
+    end;
+
+    begin
+        a := 4;
+        b := 8;
+        f(a,b);
+    end

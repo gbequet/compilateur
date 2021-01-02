@@ -1,0 +1,12 @@
+program p
+  var a: int;
+  var b: int;
+
+  begin
+    a := 1;
+    b := 1;
+    write 0-1;
+    write a-1;
+    write 1-a;
+    write a-b;
+  end

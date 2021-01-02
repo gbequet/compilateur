@@ -1,0 +1,13 @@
+program p
+    var x: int;
+    var y: int;
+    var z: int;
+    var t: int;
+
+    begin
+        read x;
+        read y;
+        read z;
+        t := x+y+z;
+        write t
+    end

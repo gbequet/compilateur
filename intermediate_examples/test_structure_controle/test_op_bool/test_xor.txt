@@ -1,0 +1,7 @@
+program p
+  begin
+    if (1 < 2) xor (3 < 4) then write "v" else write "f";
+    if (1 > 2) xor (3 < 4) then write "v" else write "f";
+    if (1 < 2) xor (3 > 4) then write "v" else write "f";
+    if (1 > 2) xor (3 > 4) then write "v" else write "f";
+  end

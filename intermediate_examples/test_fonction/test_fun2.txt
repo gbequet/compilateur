@@ -1,0 +1,16 @@
+program p
+    var x: int
+
+    function f(x : int) : int
+    begin
+        write x
+    end;
+
+    function g(x : int, y: bool) : int
+    begin
+        write x
+    end;
+
+    begin
+        f(g(1, false))
+    end

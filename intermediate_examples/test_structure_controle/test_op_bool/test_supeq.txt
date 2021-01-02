@@ -1,0 +1,4 @@
+program p
+  begin
+    if 1 >= -3 then write "v" else write "f";
+  end

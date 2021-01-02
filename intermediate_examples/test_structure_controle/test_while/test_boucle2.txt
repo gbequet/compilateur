@@ -1,0 +1,18 @@
+program p
+    var i,j,maximum : int;
+
+    begin
+        i := -2;
+        j := 0;
+        while i <= 2 do
+        begin
+            write i;
+            i := i+1;
+            while j <= 5 do
+            begin
+                write j;
+                j := j+1;
+            end;
+            j := 0;
+        end;
+    end

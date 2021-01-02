@@ -1,0 +1,6 @@
+program p
+  var A: array [1 .. 5] of int;
+
+  begin
+    A[6] := 4;
+  end

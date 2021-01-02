@@ -1,0 +1,7 @@
+program p
+  var C: array [-1 .. 1, 1 .. 5, -4 .. 4] of int;
+
+  begin
+    C[0,1+1+1,2] := 45;
+    write C[0,3,2];
+  end

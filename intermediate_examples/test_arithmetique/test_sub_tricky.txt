@@ -1,0 +1,11 @@
+program p
+    var azerty: int;
+    var b: int;
+    var c: int
+
+    begin
+        azerty := 0;
+        b := -3;
+        c := azerty - b - b - b - b - b - 1 -2 -azerty-2-b-3;
+        write c
+    end

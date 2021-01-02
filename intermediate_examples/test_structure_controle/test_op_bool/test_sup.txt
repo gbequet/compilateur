@@ -1,0 +1,13 @@
+
+program p
+  var a,b: int;
+
+  begin
+    a := 1;
+    b := 2;
+    if a > b then write "v" else write "f";
+
+    a := 3;
+    b := 2;
+    if a > b then write "v" else write "f";
+  end

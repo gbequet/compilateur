@@ -1,0 +1,4 @@
+program p
+  begin
+    if (-2) <= 4 then write "v" else write "f";
+  end

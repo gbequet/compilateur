@@ -1,0 +1,8 @@
+program p
+    var a : int;
+
+    begin
+        read a;
+        write "Hello world";
+        write a;
+    end

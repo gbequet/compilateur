@@ -1,0 +1,11 @@
+program p
+    var x,y: int;
+
+    begin
+        x := 3;
+        y := 2;
+        write 3^2;
+        write x^2;
+        write 3^y;
+        write x^y;
+    end

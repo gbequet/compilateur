@@ -1,0 +1,16 @@
+program p
+  var i: int;
+  var j: int;
+  var A: array [1 .. 5] of int;
+  var B: array [-1 .. 1, 1 .. 5] of int;
+
+  begin
+    A[2+2] := 4;
+    A[1+1+1] := 56;
+    B[0,4] := 23;
+    i := 3;
+    j := 1;
+    write A[j+3];
+    write A[i];
+    write B[i-3,i+j];
+  end
