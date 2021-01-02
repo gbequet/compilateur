@@ -3,13 +3,6 @@
 
 #include <stdlib.h>
 
-/*
-QO_CST: constante
-QO_NAME: variable
-QO_ETI: etiquette
-QO_EMPTY : operande vide
-*/
-
 typedef enum {
   QO_CST,
   QO_BOOL,
@@ -71,7 +64,7 @@ typedef struct quad {
 } quad;
 
 /*Fonctions qui creent et renvoient un quadop de type:
-QO_CST, QO_NAME, QO_ETI ou QO_EMPTY*/
+QO_CST, QO_NAME, QO_ETI, QO_EMPTY etc.*/
 quadop quadop_cst(int cst);
 quadop quadop_name(char *name);
 quadop quadop_str(char *str);
@@ -85,24 +78,13 @@ quadop quadop_empty();
 /*Fonction qui cree et renvoie un quad*/
 quad quad_make(operation_type_e op, quadop arg1, quadop arg2, quadop res, int ligne);
 
-/*Ces fonctions vont creer des quad incomplets,
-si plus tard on veut traiter les quadruplets, comment est-ce qu'on 
-pourrait vérifier si l'operande est vide si on a jamais introduit de 
-valeur dedans?
-
-=> On ne vérifie jamais puisque on a un enum qui nous dis qu'il n'y a que le res et le op1 à regarder
-
-A mon avis c'est mieux de créer des operandes de type QO_EMPTY
-et de les introduire dans quad_make quand il faut, de cette manière on 
-pourra verifier quels champs sont vides*/
-
 /*La fonction prend en parametre un quadruplet et l'affiche 
 sur la sortie standard sous une forme plus comprehensible 
 ex: (+,1,t0,c) => c = t0 + 1*/
 void print_quad(quad *quad);
 
 /*La fonction prend en parametre une operande et affiche la valeur 
-stocké. QO_CST: un entier, QO_NAME: un string, QO_ETI: un entier*/
+stocké. QO_CST: un entier, QO_NAME: un string, QO_ETI: un entier etc.*/
 void print_quadop(quadop quadop);
 
 #endif

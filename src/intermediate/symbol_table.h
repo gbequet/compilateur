@@ -36,7 +36,7 @@ struct entry {
   struct typedesc typedesc; //type de l'identificateur
   int nbparams; //Si c'est une fonction on a besoin de vérifier le nombre de paramètres
   int reg;  //le registre ou la variable est stockée
-  int mem_adr; //adresse memoire ou la var est stockée
+  int mem_adr; //adresse memoire ou la var est stockée(n'est plus utilisé)
   int last_use; //derniere fois que l'element est utilisé dans global_code
   int addr_pile; // offset dans la pile $sp
   int nb_dim; //nombre de dimensions s'il s'agit d'un array
@@ -49,18 +49,16 @@ typedef struct entry entry;
 int hash(const char *symbol);
 
 /*Fonction prend en parametre le nom de la variable
-et renvoie son indice dans la table des symboles.
-Renvoie -1 si le symbole n'est pas dans la table des symboles*/
+et renvoie tous ses attributs dans la table des symboles.
+Renvoie NULL si le symbole n'est pas dans la table des symboles*/
 entry *lookup(char *symbol);
 
-void lookup_error(char *symbol);
 
-/* ajoute un nouvel identificateur a symbol_table.
-Au debut mem_adr, reg et last_use sont à -1,
-temp est defini au moment de l'insertion de la variable dans la 
-table des symboles */
+/* Ajoute un nouvel identificateur a symbol_table*/
 entry* newname(char *symbol);
 
+/*La fonction verifie si les types des variables passées en parametre à 
+une fonction sont du bon type*/
 void check_function_type(struct typedesc functype, struct typelist args);
 
 /*La fonction va afficher sur la sortie standard la table 
@@ -78,7 +76,5 @@ void update_mem(char *symbol, int mem_adr);
 /*La fonction va mettre la valeur reg pour l'attribut "reg"
 de la variable symbol dans la table des symboles*/
 void update_reg(char *symbol, int reg);
-
-void test_liste();
 
 #endif
