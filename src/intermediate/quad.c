@@ -139,6 +139,14 @@ void print_quad(quad *quad) {
       print_quadop(quad->res);
       break;
 
+    case Q_IFBOOL:
+
+      printf("if ");
+      print_quadop(quad->op1);
+      printf(" goto ");
+      print_quadop(quad->res);
+      break;
+
     case Q_SUP:
 
       printf("if ");

@@ -1,0 +1,6 @@
+program p
+  var toto: bool;
+  begin
+    toto := false;
+    if toto then write "gagne" else write "perdu"
+  end 

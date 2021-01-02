@@ -48,6 +48,7 @@ typedef enum
   Q_GOTO,
   Q_CALL,
   Q_PARAM,
+  Q_IFBOOL,
   Q_ACCESS_ELEM_ARR,
   Q_SAVE_ELEM_ARR
 } operation_type_e;

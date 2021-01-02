@@ -455,8 +455,22 @@ expr:
   }
   | cte
     {
-        $$.quadop = $1.quadop;
-        $$.typedesc.type = $1.typedesc.type;
+        if ($1.typedesc.type == TYPE_BOOL){
+            struct expr_s expr;
+            expr.true = creelist(current_context->nextquad);
+            quad q;
+            q = quad_make(Q_IFBOOL,$1.quadop,emp,emp,current_context->nextquad);
+            gencode(q);
+            expr.false = creelist(current_context->nextquad);
+            q = quad_make(Q_GOTO,emp,emp,emp,current_context->nextquad);
+            gencode(q);
+            expr.typedesc.type = TYPE_BOOL;
+            $$ = expr;
+        }
+        else{
+            $$.quadop = $1.quadop;
+            $$.typedesc.type = $1.typedesc.type; 
+        }
     }
 ;
 
