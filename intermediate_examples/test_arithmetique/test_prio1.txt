@@ -1,0 +1,9 @@
+(* exempl*e de com(*mentai*re **)
+
+program p
+    begin
+        write (5 + 9 * 2 + 6 / 2);
+        write (5 ^ 2 * 2 + 6 / 2);
+        write (5 + 2 * 2 + 6 ^ 2);
+        write (5 - (2 * 2 + 6 ^ 2));
+    end

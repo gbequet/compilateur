@@ -11,6 +11,15 @@ if [ "$#" -eq 1 ]; then
     ./scalpa intermediate_examples/test_arithmetique/test_mul_prio.txt > /dev/null
     spim -file prog.asm | tail -n +$1 > intermediate_examples/resultats_test/test_priorites.txt
 
+    ./scalpa intermediate_examples/test_arithmetique/test_prio1.txt > /dev/null
+    spim -file prog.asm | tail -n +$1 >> intermediate_examples/resultats_test/test_priorites.txt
+
+    ./scalpa intermediate_examples/test_structure_controle/test_op_bool/test_prio2.txt > /dev/null
+    spim -file prog.asm | tail -n +$1 >> intermediate_examples/resultats_test/test_priorites.txt
+
+    ./scalpa intermediate_examples/test_structure_controle/test_op_bool/test_prio3.txt > /dev/null
+    spim -file prog.asm | tail -n +$1 >> intermediate_examples/resultats_test/test_priorites.txt
+
 
     expected="./intermediate_examples/resultats_test/test_priorites_expected.txt"
     obtenu="./intermediate_examples/resultats_test/test_priorites.txt"

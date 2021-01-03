@@ -54,7 +54,7 @@
 %token <intval> NOMBRE INTG
 %token <strval> IDENT STR
 %token FUNCTION
-%token PLUS MOINS FOIS DIV
+%token PLUS MOINS FOIS DIV UMOINS
 %token VAR
 %token BOOL INT UNIT STRING
 %token ARRAY
@@ -86,10 +86,13 @@
 %type <arrayval> arraytype
 %type <intval> integer
 
-%left XOR OR AND NOT
+%left XOR OR
 %left PLUS MOINS
+%left AND
 %left FOIS DIV
 %right POW
+%right NOT
+%right UMOINS
 %left SUP SUPEQ INF INFEQ EQ DIFF
 %left IF THEN
 %left ELSE
@@ -385,7 +388,7 @@ expr:
   | expr INFEQ expr { $$ = bool_expr($1, Q_INFEQ, $3); }
   | expr EQ expr    { $$ = bool_expr($1, Q_EQ, $3); }
   | expr DIFF expr  { $$ = bool_expr($1, Q_DIFF, $3); }
-  | MOINS expr   
+  | MOINS expr       %prec UMOINS  
   {
      struct expr_s zer;
      zer.quadop = quadop_cst(0);
