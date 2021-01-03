@@ -9,6 +9,7 @@ int cpt_label_str = 0;
 liste *reg_utilise; // contient tout les registre qui sont encore utilisé
 liste *reg_temp_utilise; // contient tout les registres $t qui sont encore utilisé
 liste *reg_arg_utilise; // contient tout les registre $a qui sont encore utilisé
+lastTemp = -1;
 
 // renvoie le registre qu'on pourra utiliser pour le temp
 int getRegTemp()
@@ -18,6 +19,7 @@ int getRegTemp()
   {
     res = last(reg_temp_utilise) + 1;
     concat(reg_temp_utilise, creelist(res));
+    lastTemp = res-1;
     return res;
   }
   else // tout les registres tmp 8-15 sont utilisés
@@ -26,6 +28,7 @@ int getRegTemp()
     // on le move dans $8 pour pouvoir de nouveau utiliser des registres tmp
     fprintf(yyout, "move $8, $16\n");
     reg_temp_utilise = creelist(8);
+    lastTemp = 16;
     return 8;
   }
 }
@@ -154,12 +157,12 @@ void genmips(context_t *context)
       break;
 
     case Q_AFFECT:
-      affectation(q, place, reg_temp_utilise);
+      affectation(q, place);
       reg_temp_utilise = creelist(7);
       break;
 
     case Q_WRITE:
-      cpt_label_str = ecriture(q, place, cpt_label_str, reg_temp_utilise);
+      cpt_label_str = ecriture(q, place, cpt_label_str);
       break;
 
     case Q_READ:

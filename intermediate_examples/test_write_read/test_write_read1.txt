@@ -3,6 +3,6 @@ program p
 
     begin
         read a;
-        write "Hello world";
+        write "Hello world\n";
         write a;
     end

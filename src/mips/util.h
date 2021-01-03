@@ -6,6 +6,8 @@
 #include "../intermediate/yacc_util.h"
 #include "../intermediate/context.h"
 
+extern int lastTemp;
+
 /*Fonction à appeler au debut, fait toutes les declarations et initialisation*/
 void genDebutMips(context_t *context);
 
@@ -16,14 +18,14 @@ void arithmetique(quad q, int place, char *fct);
 void puissance(quad q, int place);
 
 /*Genere le conde assembleur pour une affectation*/
-void affectation(quad q, int place, liste *reg_temp_utilise);
+void affectation(quad q, int place);
 
 /*Genere le code assembleur pour effectuer une lecture sur l'entree standard*/
 void lecture(quad q);
 
 /*Genere le code assembleur pour effectuer une ecriture sur la sortie 
 standard et renvoie le nouveau compteur pour les declaration de string*/ 
-int ecriture(quad q, int place, int cpt_label_str, liste *reg_temp_utilise);
+int ecriture(quad q, int place, int cpt_label_str);
 
 /*Genere le code assembleur pour les expressions conditionelles*/
 void conditionnelle(quad q, char *fct);

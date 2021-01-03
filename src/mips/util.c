@@ -184,7 +184,7 @@ void puissance(quad q, int place)
   fprintf(yyout, "move $%d, $v0\n", place);
 }
 
-void affectation(quad q, int place, liste *reg_temp_utilise)
+void affectation(quad q, int place)
 {
   entry *e1, *eres;
   eres = lookup(q.res.u.name);
@@ -203,11 +203,7 @@ void affectation(quad q, int place, liste *reg_temp_utilise)
     }
     else // x := temp
     {
-      /* cas ou x := string pas geré */
-      if (last(reg_temp_utilise) == 8)
-        fprintf(yyout, "sw $16, %d($sp)\n", eres->addr_pile);
-      else
-        fprintf(yyout, "sw $%d, %d($sp)\n", last(reg_temp_utilise) - 1, eres->addr_pile);
+      fprintf(yyout, "sw $%d, %d($sp)\n", lastTemp, eres->addr_pile);
     }
   }
 }
@@ -234,7 +230,7 @@ void lecture(quad q)
   }
 }
 
-int ecriture(quad q, int place, int cpt_label_str, liste *reg_temp_utilise)
+int ecriture(quad q, int place, int cpt_label_str)
 {
   entry *eres;
 
@@ -281,7 +277,7 @@ int ecriture(quad q, int place, int cpt_label_str, liste *reg_temp_utilise)
         else
         {
           fprintf(yyout, "li $v0, 1\n");
-          fprintf(yyout, "move $a0, $%d\n", last(reg_temp_utilise)-1);
+          fprintf(yyout, "move $a0, $%d\n", lastTemp);
         }
       }
     }

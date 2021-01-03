@@ -85,7 +85,7 @@ void pushcontext(const char *function_name) {
 }
 
 void popcontext(void) {
-  printf("\n>>> POP CONTEXT [%s] >>>\n", current_context->function_name);
+  printf(">>> POP CONTEXT [%s] >>>\n", current_context->function_name);
 
   genmips(current_context);
 
