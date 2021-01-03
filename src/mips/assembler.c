@@ -9,7 +9,7 @@ int cpt_label_str = 0;
 liste *reg_utilise; // contient tout les registre qui sont encore utilisé
 liste *reg_temp_utilise; // contient tout les registres $t qui sont encore utilisé
 liste *reg_arg_utilise; // contient tout les registre $a qui sont encore utilisé
-lastTemp = -1;
+int lastTemp = -1;
 
 // renvoie le registre qu'on pourra utiliser pour le temp
 int getRegTemp()
