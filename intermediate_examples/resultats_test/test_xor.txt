@@ -1,15 +1,16 @@
 The following symbols are undefined:
-L35
 L37
 L39
-L50
+L93887985090610
 L52
 L54
-L5
 L7
 L9
-L20
+L93887985090565
+L93887985090580
+L93887985090595
 L22
 L24
 
   Exception 5  [Address error in store]  occurred and ignored
+[0x0040006c]	0x08000000  j 0x00000000 [L93887985090565]  ; 36: j L93887985090565
