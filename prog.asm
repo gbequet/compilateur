@@ -9,7 +9,7 @@ SEGFAULT:
 li $v0, 4
 la $a0, segFaultWarning
 syscall
-j L44
+j L23
 
 
 POW:
@@ -26,127 +26,104 @@ EXIT_POW:
 jr $ra
 
 main:
-addi $sp, $sp, -24
 addi $sp, $sp, -4
-li $24, 0
-li $25, 0
-add $8, $24, $25
-li $24, 5
-li $25, 1
-sub $9, $24, $25
-li $24, 6
-bge $9, $24, SEGFAULT
-li $24, 0
-blt $9, $24, SEGFAULT
-add $11, $8, $9
-li $24, 4
-mul $12, $11, $24
-li $24, 4
-add $13, $24, $12
-li $24, 4
-move $25, $sp
-add $25, $25, $13
-sw $24, ($25)
-L8:
-li $24, 0
-li $25, 0
-add $14, $24, $25
-li $24, 5
-li $25, 2
-sub $15, $24, $25
-li $24, 6
-bge $15, $24, SEGFAULT
-li $24, 0
-blt $15, $24, SEGFAULT
-move $8, $16
-add $8, $14, $15
-li $24, 4
-mul $9, $8, $24
-li $24, 4
-add $10, $24, $9
-li $24, 0
-li $25, 0
-add $11, $24, $25
-li $24, 5
-li $25, 1
-sub $12, $24, $25
-li $24, 6
-bge $12, $24, SEGFAULT
-li $24, 0
-blt $12, $24, SEGFAULT
-add $14, $11, $12
-li $24, 4
-mul $15, $14, $24
-li $24, 4
-add $16, $24, $15
-move $8, $16
-move $24, $sp
-add $24, $24, $16
-lw $8, ($24)
-move $25, $sp
-add $25, $25, $10
-sw $9, ($25)
-L24:
-li $24, 0
-li $25, 0
-add $10, $24, $25
-li $24, 5
-li $25, 1
-sub $11, $24, $25
-li $24, 6
-bge $11, $24, SEGFAULT
-li $24, 0
-blt $11, $24, SEGFAULT
-add $13, $10, $11
-li $24, 4
-mul $14, $13, $24
-li $24, 4
-add $15, $24, $14
-move $24, $sp
-add $24, $24, $15
-lw $16, ($24)
-move $8, $16
-li $v0, 1
-move $a0, $16
-syscall
-L33:
+addi $sp, $sp, -4
+addi $sp, $sp, -4
+addi $sp, $sp, -4
 .data
-str0: .asciiz "\n"
+str0: .asciiz "Entrez le premier entier : "
 .text
 li $v0, 4
 la $a0, str0
 syscall
-L34:
-li $24, 0
-li $25, 0
-add $9, $24, $25
-li $24, 5
-li $25, 2
-sub $10, $24, $25
-li $24, 6
-bge $10, $24, SEGFAULT
-li $24, 0
-blt $10, $24, SEGFAULT
-add $12, $9, $10
-li $24, 4
-mul $13, $12, $24
-li $24, 4
-add $14, $24, $13
-move $24, $sp
-add $24, $24, $14
-lw $15, ($24)
-li $v0, 1
-move $a0, $15
+L1:
+li $v0, 5
 syscall
-L43:
+sw $v0, 4($sp)
+L2:
 .data
-str1: .asciiz "\n"
+str1: .asciiz "Entrez le deuxieme entier : "
 .text
 li $v0, 4
 la $a0, str1
 syscall
+L3:
+li $v0, 5
+syscall
+sw $v0, 0($sp)
+L4:
+lw $10, 4($sp)
+sw $10, 12($sp)
+L5:
+lw $8, 0($sp)
+sw $8, 8($sp)
+L6:
+lw $24, 4($sp)
+lw $25, 0($sp)
+bne $24, $25, L8
+j L16
+L8:
+lw $24, 4($sp)
+lw $25, 0($sp)
+bgt $24, $25, L10
+j L13
+L10:
+lw $24, 4($sp)
+lw $25, 0($sp)
+sub $9, $24, $25
+sw $9, 4($sp)
+j L6
+L13:
+lw $24, 0($sp)
+lw $25, 4($sp)
+sub $8, $24, $25
+sw $8, 0($sp)
+j L6
+L16:
+.data
+str2: .asciiz "pgcd("
+.text
+li $v0, 4
+la $a0, str2
+syscall
+L17:
+lw $8, 12($sp)
+li $v0, 1
+move $a0, $8
+syscall
+L18:
+.data
+str3: .asciiz ","
+.text
+li $v0, 4
+la $a0, str3
+syscall
+L19:
+lw $9, 8($sp)
+li $v0, 1
+move $a0, $9
+syscall
+L20:
+.data
+str4: .asciiz ") = "
+.text
+li $v0, 4
+la $a0, str4
+syscall
+L21:
+lw $10, 4($sp)
+li $v0, 1
+move $a0, $10
+syscall
+L22:
+.data
+str5: .asciiz "\n"
+.text
+li $v0, 4
+la $a0, str5
+syscall
 
-L44:
+L23:
 
 li $v0, 10
 syscall
