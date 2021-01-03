@@ -138,6 +138,14 @@ void print_quad(quad *quad) {
       printf("read ");
       print_quadop(quad->res);
       break;
+    
+    // case Q_IFBOOL:
+
+    //   printf("if ");
+    //   print_quadop(quad->op1);
+    //   printf(" goto ");
+    //   print_quadop(quad->res);
+    //   break;
 
     case Q_SUP:
 
@@ -184,16 +192,6 @@ void print_quad(quad *quad) {
       printf("if ");
       print_quadop(quad->op1);
       printf(" = ");
-      print_quadop(quad->op2);
-      printf(" goto ");
-      print_quadop(quad->res);
-      break;
-
-    case Q_DIFF:
-
-      printf("if ");
-      print_quadop(quad->op1);
-      printf(" <> ");
       print_quadop(quad->op2);
       printf(" goto ");
       print_quadop(quad->res);

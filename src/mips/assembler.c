@@ -22,9 +22,9 @@ int getRegTemp()
     lastTemp = res-1;
     return res;
   }
-  else // tout les registres tmp 8-16 sont utilisés
+  else // tout les registres tmp 8-15 sont utilisés
   {
-    // $16 contient le resultat intermediaire du calcul
+    // $15 contient le resultat intermediaire du calcul
     // on le move dans $8 pour pouvoir de nouveau utiliser des registres tmp
     fprintf(yyout, "move $8, $16\n");
     reg_temp_utilise = creelist(8);

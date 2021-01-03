@@ -39,6 +39,7 @@ typedef enum
   Q_AFFECT,
   Q_WRITE,
   Q_READ,
+  //Q_IFBOOL,
   Q_SUP,
   Q_SUPEQ,
   Q_INF,
