@@ -203,7 +203,14 @@ void affectation(quad q, int place)
     }
     else // x := temp
     {
-      fprintf(yyout, "sw $%d, %d($sp)\n", lastTemp, eres->addr_pile);
+      if (q.res.for_tab == 1)
+      {
+        fprintf(yyout, "move $24, $sp\n");
+        fprintf(yyout, "add $24, $24, $%d\n", lastTemp);
+        fprintf(yyout, "sw $v0, ($24)\n");
+      }
+      else
+        fprintf(yyout, "sw $%d, %d($sp)\n", lastTemp, eres->addr_pile);
     }
   }
 }
@@ -224,7 +231,7 @@ void lecture(quad q)
     if (q.res.for_tab == 1)
     {
       fprintf(yyout, "move $24, $sp\n");
-      fprintf(yyout, "add $24, $24, $%d\n", eres->reg-1);
+      fprintf(yyout, "add $24, $24, $%d\n", lastTemp);
       fprintf(yyout, "sw $v0, ($24)\n");
     }
   }
@@ -271,7 +278,7 @@ int ecriture(quad q, int place, int cpt_label_str)
         if (q.res.for_tab == 1)
         {
           fprintf(yyout, "move $24, $sp\n");
-          fprintf(yyout, "add $24, $24, $%d\n", eres->reg);
+          fprintf(yyout, "add $24, $24, $%d\n", lastTemp);
           fprintf(yyout, "lw $25, ($24)\n");
         }
         else
@@ -427,11 +434,11 @@ void sauvegarde_element_tableau(quad q)
     if (eres->typedesc.type == TYPE_INT) // *q.op1 := x
     {
       fprintf(yyout, "lw $24, %d($sp)\n", eres->addr_pile);
-      fprintf(yyout, "sw $24, %d\n", e1->reg);
+      fprintf(yyout, "sw $24, ($%d)\n", e1->reg);
     }
     else // *q.op1 := temp
     {
-      fprintf(yyout, "sw $%d, %d\n", eres->reg, e1->reg);
+      fprintf(yyout, "sw $%d, ($%d)\n", eres->reg, e1->reg);
     }
   }
 }

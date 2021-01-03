@@ -14,6 +14,9 @@ if [ "$#" -eq 1 ]; then
     ./scalpa intermediate_examples/test_structure_controle/test_while/test_boucle2.txt > /dev/null
     spim -file prog.asm | tail -n +$1 >> intermediate_examples/resultats_test/test_while.txt
 
+    ./scalpa intermediate_examples/test_structure_controle/test_while/test_boucle3.txt > /dev/null
+    spim -file prog.asm | tail -n +$1 >> intermediate_examples/resultats_test/test_while.txt
+
 
 
     expected="./intermediate_examples/resultats_test/test_while_expected.txt"
