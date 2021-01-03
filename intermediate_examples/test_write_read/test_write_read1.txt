@@ -5,4 +5,5 @@ program p
         read a;
         write "Hello world\n";
         write a;
+        write "\n";
     end

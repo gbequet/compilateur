@@ -3,7 +3,6 @@
 void genDebutMips(context_t *context)
 {
   fprintf(yyout, ".data\n");
-  fprintf(yyout, "newLine: .asciiz \"\\n\"\n");
   fprintf(yyout, "segFaultWarning: .asciiz \"Segmentation fault\"\n");
   fprintf(yyout, "str_false: .asciiz \"False\"\n");
   fprintf(yyout, "str_true: .asciiz \"True\"\n"); 
@@ -309,11 +308,6 @@ int ecriture(quad q, int place, int cpt_label_str)
 
   fprintf(yyout, "syscall\n");
 
-  // on va a la ligne (plus net)
-  fprintf(yyout, "li $v0, 4\n");
-  fprintf(yyout, "la $a0, newLine\n");
-  fprintf(yyout, "syscall\n");
-
   return cpt_label_str;
 }
 
@@ -455,8 +449,9 @@ void sauvegarde_element_tableau(quad q)
     {
       if (q.res.for_tab == 1)
       {
-        fprintf(yyout, "move $24, $sp\n");
-        fprintf(yyout, "add $24, $24, $%d\n", eres->reg);
+        fprintf(yyout, "move $23, $sp\n");
+        fprintf(yyout, "add $23, $23, $%d\n", eres->reg);
+        fprintf(yyout, "lw $24, ($23)\n");
         fprintf(yyout, "move $25, $sp\n");
         fprintf(yyout, "add $25, $25, $%d\n", e1->reg);
         fprintf(yyout, "sw $24, ($25)\n");

@@ -5,10 +5,18 @@ program p
     begin
         i := -1;
         j := 0;
+
+        write "Remplissez le tableau :\n";
         while i <= 1 do
         begin
             while j <= 1 do
             begin
+                write "t[";
+                write i;
+                write ",";
+                write j;
+                write "] = ";
+
                 read t[i,j];
                 j := j+1
             end;
@@ -30,6 +38,7 @@ program p
         i := i+1; 
         end;
 
-        write "le maximum est";
+        write "le maximum du tableau est : ";
         write maximum;
+        write "\n";
     end

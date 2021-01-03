@@ -6,7 +6,11 @@ program p
         a := 4;
         b := 2;
         write 2*4;
+        write "\n";
         write a*2;
+        write "\n";
         write 2*a;
+        write "\n";
         write a*b;
+        write "\n";
     end

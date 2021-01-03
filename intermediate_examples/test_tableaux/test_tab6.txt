@@ -11,6 +11,9 @@ program p
     i := 3;
     j := 1;
     write A[j+3];
+    write "\n";
     write A[i];
+    write "\n";
     write B[i-3,i+j];
+    write "\n";
   end

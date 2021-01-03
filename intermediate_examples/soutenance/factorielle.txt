@@ -1,0 +1,21 @@
+program p
+    var n,f,res: int;
+
+    begin
+        write "Entrez un nombre :\n";
+        read n;
+
+        f := n;
+
+        res := 1;
+        while n > 1 do
+        begin
+          res := res*n;
+          n := n-1;
+        end;
+
+        write f;
+        write " factorielle = ";
+        write res;
+        write "\n";
+    end

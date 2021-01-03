@@ -9,5 +9,6 @@ program p
        i := 2;
        a := true;
        b := i - a;
-       write b
+       write b;
+       write "\n";
     end

@@ -4,4 +4,5 @@ program p
   begin
     C[0,1+1+1,2] := 45;
     write C[0,3,2];
+    write "\n";
   end

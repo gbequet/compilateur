@@ -6,4 +6,5 @@ program p
     A[0,2] := 10;
     B[0,10] := 13;
     write B[0,A[0,2]];
+    write "\n";
   end

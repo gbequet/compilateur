@@ -6,7 +6,11 @@ program p
     a := 1;
     b := 1;
     write 0-1;
+    write "\n";
     write a-1;
+    write "\n";
     write 1-a;
+    write "\n";
     write a-b;
+    write "\n";
   end
