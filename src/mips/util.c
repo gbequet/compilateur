@@ -5,6 +5,8 @@ void genDebutMips(context_t *context)
   fprintf(yyout, ".data\n");
   fprintf(yyout, "newLine: .asciiz \"\\n\"\n");
   fprintf(yyout, "segFaultWarning: .asciiz \"Segmentation fault\"\n");
+  fprintf(yyout, "str_false: .asciiz \"False\"\n");
+  fprintf(yyout, "str_true: .asciiz \"True\"\n"); 
 
   fprintf(yyout, "\n.text\n");
 
@@ -240,12 +242,23 @@ void lecture(quad q)
 int ecriture(quad q, int place, int cpt_label_str)
 {
   entry *eres;
-
   switch (q.res.type)
   {
   case QO_CST:
     fprintf(yyout, "li $v0, 1\n");
     fprintf(yyout, "li $a0, %d\n", q.res.u.cst);
+    break;
+
+  case QO_BOOL:
+
+    if(q.res.u.cst == 0){
+      fprintf(yyout, "li $v0, 4\n");
+      fprintf(yyout, "la $a0, str_false\n");
+    }
+    else if (q.res.u.cst == 1){
+      fprintf(yyout, "li $v0, 4\n");
+      fprintf(yyout, "la $a0, str_true\n");
+    }
     break;
 
   case QO_STRING: // PB : il faut un seul .data
