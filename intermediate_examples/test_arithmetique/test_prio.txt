@@ -1,8 +1,0 @@
-(* exempl*e de com(*mentai*re **)
-
-program p
-    var b: int
-
-    begin
-        b := 4 + 2 / 2 ^ 3 ^ 4
-    end

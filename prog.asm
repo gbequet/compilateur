@@ -8,7 +8,7 @@ SEGFAULT:
 li $v0, 4
 la $a0, segFaultWarning
 syscall
-j L17
+j L36
 
 
 POW:
@@ -25,17 +25,19 @@ EXIT_POW:
 jr $ra
 
 main:
-li $24, 5
-li $25, 5
-add $8, $24, $25
 li $24, 1
-add $9, $8, $24
-li $24, 6
+li $25, 2
+blt $24, $25, L4
+j L2
+L2:
+li $24, 3
 li $25, 4
-add $10, $24, $25
-li $24, 1
-add $11, $10, $24
-bne $9, $11, L6
+blt $24, $25, L4
+j L8
+L4:
+li $24, 5
+li $25, 8
+blt $24, $25, L6
 j L8
 L6:
 .data
@@ -59,17 +61,21 @@ li $v0, 4
 la $a0, newLine
 syscall
 L9:
-li $24, 5
-li $25, 5
-add $12, $24, $25
-li $24, 6
-li $25, 4
-add $13, $24, $25
 li $24, 1
-add $14, $13, $24
-bne $12, $14, L14
-j L16
-L14:
+li $25, 2
+blt $24, $25, L13
+j L11
+L11:
+li $24, 3
+li $25, 4
+blt $24, $25, L13
+j L17
+L13:
+li $24, 5
+li $25, 8
+bgt $24, $25, L15
+j L17
+L15:
 .data
 str2: .asciiz "v"
 .text
@@ -79,8 +85,8 @@ syscall
 li $v0, 4
 la $a0, newLine
 syscall
-j L17
-L16:
+j L18
+L17:
 .data
 str3: .asciiz "f"
 .text
@@ -90,8 +96,80 @@ syscall
 li $v0, 4
 la $a0, newLine
 syscall
+L18:
+li $24, 1
+li $25, 2
+bgt $24, $25, L22
+j L20
+L20:
+li $24, 3
+li $25, 4
+blt $24, $25, L22
+j L26
+L22:
+li $24, 5
+li $25, 8
+blt $24, $25, L24
+j L26
+L24:
+.data
+str4: .asciiz "v"
+.text
+li $v0, 4
+la $a0, str4
+syscall
+li $v0, 4
+la $a0, newLine
+syscall
+j L27
+L26:
+.data
+str5: .asciiz "f"
+.text
+li $v0, 4
+la $a0, str5
+syscall
+li $v0, 4
+la $a0, newLine
+syscall
+L27:
+li $24, 1
+li $25, 2
+bgt $24, $25, L31
+j L29
+L29:
+li $24, 3
+li $25, 4
+blt $24, $25, L31
+j L35
+L31:
+li $24, 5
+li $25, 8
+bgt $24, $25, L33
+j L35
+L33:
+.data
+str6: .asciiz "v"
+.text
+li $v0, 4
+la $a0, str6
+syscall
+li $v0, 4
+la $a0, newLine
+syscall
+j L36
+L35:
+.data
+str7: .asciiz "f"
+.text
+li $v0, 4
+la $a0, str7
+syscall
+li $v0, 4
+la $a0, newLine
+syscall
 
-L17:
+L36:
 
 li $v0, 10
 syscall
