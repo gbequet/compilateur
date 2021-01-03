@@ -1,18 +1,25 @@
 program p
-    var n,f,f1,f2: int;
+    var n,cpt,f,f1,f2: int;
 
     begin
-        write "nombre de terme a afficher";
+        write "Nombre de terme a afficher :\n";
         read n;
+
+        cpt := n;
+
         f1 := -1;
         f2 := 1;
-        while n > -1 do
+        while cpt > -1 do
         begin
           f := f1 + f2;
           f1 := f2;
           f2 := f;
-          write f;
 
-          n := n - 1;
+          write n-cpt;
+          write " : ";
+          write f;
+          write "\n";
+
+          cpt := cpt - 1;
         end;
     end

@@ -3,10 +3,14 @@ program p
     var t : array[0..5] of int;
 
     begin
-        write "Remplissez le tableau";
+        write "Remplissez le tableau :\n";
         i := 0;
         while (i <= 5) do
         begin
+            write "t[";
+            write i;
+            write "] = ";
+
             read t[i];
             i := i+1;
         end;
@@ -30,11 +34,16 @@ program p
         end;
 
 
-        write "Le tableau trie";
+        write "Le tableau trie :\n";
         i := 0;
         while (i <= 5) do
         begin
+            write "t[";
+            write i;
+            write "] = ";
+
             write t[i];
+            write "\n";
             i := i+1;
         end;
     end

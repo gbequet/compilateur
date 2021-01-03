@@ -10,6 +10,7 @@ program p
             while j <= 4 do 
             begin
                 write n;
+                write "\n";
                 n := n+1;
                 j := j+1;
             end;

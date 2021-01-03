@@ -9,5 +9,6 @@ program p
         read y;
         read z;
         t := x+y+z;
-        write t
+        write t;
+        write "\n";
     end

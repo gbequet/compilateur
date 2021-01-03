@@ -7,4 +7,5 @@ program p
     B[2,b] := 10;
     a := 3 + B[2,1];
     write a;
+    write "\n";
   end

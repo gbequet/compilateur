@@ -6,6 +6,7 @@ program p
         while i <= 5 do
         begin
             write i;
+            write "\n";
             i := i+1;
         end;
     end

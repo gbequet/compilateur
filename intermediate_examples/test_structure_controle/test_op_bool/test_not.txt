@@ -1,5 +1,7 @@
 program p
   begin
     if not (3 < 4) then write "v" else write "f";
+    write "\n";
     if not (3 > 4) then write "v" else write "f";
+    write "\n";
   end

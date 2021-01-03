@@ -6,8 +6,10 @@ program p
     a := 1;
     b := 2;
     if a > b then write "v" else write "f";
+    write "\n";
 
     a := 3;
     b := 2;
     if a > b then write "v" else write "f";
+    write "\n";
   end

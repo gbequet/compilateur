@@ -5,5 +5,7 @@ program p
         b1 := true;
         b2 := false;
         write true;
+        write "\n";
         write false;
+        write "\n";
     end
