@@ -29,7 +29,6 @@ jr $ra
 main:
 addi $sp, $sp, -4
 addi $sp, $sp, -4
-addi $sp, $sp, -4
 addi $sp, $sp, -24
 addi $sp, $sp, -4
 addi $sp, $sp, -4
@@ -44,9 +43,9 @@ la $a0, newLine
 syscall
 L1:
 li $8, 0
-sw $8, 40($sp)
+sw $8, 36($sp)
 L2:
-lw $24, 40($sp)
+lw $24, 36($sp)
 li $25, 5
 ble $24, $25, L4
 j L15
@@ -55,7 +54,7 @@ li $24, 0
 li $25, 0
 add $8, $24, $25
 li $24, 5
-lw $25, 40($sp)
+lw $25, 36($sp)
 sub $9, $24, $25
 li $24, 6
 bge $9, $24, SEGFAULT
@@ -72,31 +71,31 @@ move $24, $sp
 add $24, $24, $13
 sw $v0, ($24)
 L12:
-lw $24, 40($sp)
+lw $24, 36($sp)
 li $25, 1
 add $15, $24, $25
-sw $15, 40($sp)
+sw $15, 36($sp)
 j L2
 L15:
 li $8, 5
-sw $8, 40($sp)
+sw $8, 36($sp)
 L16:
-lw $24, 40($sp)
+lw $24, 36($sp)
 li $25, 1
 bge $24, $25, L18
 j L83
 L18:
 li $8, 0
-sw $8, 36($sp)
+sw $8, 32($sp)
 L19:
-lw $24, 40($sp)
+lw $24, 36($sp)
 li $25, 1
 sub $8, $24, $25
-lw $24, 36($sp)
+lw $24, 32($sp)
 ble $24, $8, L22
 j L80
 L22:
-lw $24, 36($sp)
+lw $24, 32($sp)
 li $25, 1
 add $9, $24, $25
 li $24, 0
@@ -121,7 +120,7 @@ li $24, 0
 li $25, 0
 add $8, $24, $25
 li $24, 5
-lw $25, 36($sp)
+lw $25, 32($sp)
 sub $9, $24, $25
 li $24, 6
 bge $9, $24, SEGFAULT
@@ -142,7 +141,7 @@ li $24, 0
 li $25, 0
 add $15, $24, $25
 li $24, 5
-lw $25, 36($sp)
+lw $25, 32($sp)
 sub $16, $24, $25
 move $8, $16
 li $24, 6
@@ -159,7 +158,7 @@ add $24, $24, $11
 lw $12, ($24)
 sw $12, 4($sp)
 L50:
-lw $24, 36($sp)
+lw $24, 32($sp)
 li $25, 1
 add $8, $24, $25
 li $24, 0
@@ -185,7 +184,7 @@ li $24, 0
 li $25, 0
 add $8, $24, $25
 li $24, 5
-lw $25, 36($sp)
+lw $25, 32($sp)
 sub $9, $24, $25
 li $24, 6
 bge $9, $24, SEGFAULT
@@ -201,7 +200,7 @@ move $25, $sp
 add $25, $25, $13
 sw $24, ($25)
 L68:
-lw $24, 36($sp)
+lw $24, 32($sp)
 li $25, 1
 add $15, $24, $25
 li $24, 0
@@ -224,16 +223,16 @@ move $25, $sp
 add $25, $25, $12
 sw $24, ($25)
 L77:
-lw $24, 36($sp)
+lw $24, 32($sp)
 li $25, 1
 add $14, $24, $25
-sw $14, 36($sp)
+sw $14, 32($sp)
 j L19
 L80:
-lw $24, 40($sp)
+lw $24, 36($sp)
 li $25, 1
 sub $8, $24, $25
-sw $8, 40($sp)
+sw $8, 36($sp)
 j L16
 L83:
 .data
@@ -247,9 +246,9 @@ la $a0, newLine
 syscall
 L84:
 li $8, 0
-sw $8, 40($sp)
+sw $8, 36($sp)
 L85:
-lw $24, 40($sp)
+lw $24, 36($sp)
 li $25, 5
 ble $24, $25, L87
 j L99
@@ -258,7 +257,7 @@ li $24, 0
 li $25, 0
 add $8, $24, $25
 li $24, 5
-lw $25, 40($sp)
+lw $25, 36($sp)
 sub $9, $24, $25
 li $24, 6
 bge $9, $24, SEGFAULT
@@ -279,11 +278,11 @@ li $v0, 4
 la $a0, newLine
 syscall
 L96:
-lw $24, 40($sp)
+lw $24, 36($sp)
 li $25, 1
 add $16, $24, $25
 move $8, $16
-sw $16, 40($sp)
+sw $16, 36($sp)
 j L85
 
 L99:

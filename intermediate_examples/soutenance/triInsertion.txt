@@ -1,5 +1,5 @@
 program p
-    var i,j,tmp1,tmp2 : int;
+    var i,j,tmp,mem : int;
     var t : array[0..5] of int;
 
     begin
@@ -11,22 +11,19 @@ program p
             i := i+1;
         end;
 
-        i := 5;
-        while i >= 1 do
+        i := 1;
+        while i <= 5 do
         begin
-            j := 0;
-            while j <= (i-1) do
+            mem := t[i];
+            j := i;
+            while (j > 0) and (t[j-1] > mem) do
             begin
-                if t[j+1] < t[j] then
-                begin
-                    tmp1 := t[j];
-                    tmp2 := t[j+1];
-                    t[j] := tmp2;
-                    t[j+1] := tmp1;
-                end;
-                j := j+1;
+                tmp := t[j-1];
+                t[j] := tmp;
+                j := j-1;
             end;
-            i := i-1;
+            t[j] := mem;
+            i := i+1;
         end;
 
 
