@@ -1,0 +1,9 @@
+program p
+    var b1, b2: bool;
+
+    begin
+        b1 := true;
+        b2 := false;
+        write true;
+        write false;
+    end

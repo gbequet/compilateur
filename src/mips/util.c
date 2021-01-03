@@ -204,7 +204,10 @@ void affectation(quad q, int place, liste *reg_temp_utilise)
     else // x := temp
     {
       /* cas ou x := string pas geré */
-      fprintf(yyout, "sw $%d, %d($sp)\n", last(reg_temp_utilise) - 1, eres->addr_pile);
+      if (last(reg_temp_utilise) == 8)
+        fprintf(yyout, "sw $16, %d($sp)\n", eres->addr_pile);
+      else
+        fprintf(yyout, "sw $%d, %d($sp)\n", last(reg_temp_utilise) - 1, eres->addr_pile);
     }
   }
 }

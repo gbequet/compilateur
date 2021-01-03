@@ -1,0 +1,16 @@
+program p
+    var i,j,k : int;
+
+    begin
+        i := 4;
+        while i > 1 do
+        begin
+            j := 0;
+            k := i-1;
+            while (j < k) do
+            begin
+                j := j+1;
+            end;
+            i := i-1;
+        end;
+    end

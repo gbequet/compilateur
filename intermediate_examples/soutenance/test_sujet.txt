@@ -1,32 +1,35 @@
 program p
     var i,j,maximum : int;
-    var t : array[-4..4, 0..10] of int;
+    var t : array[-1..1, 0..1] of int;
 
     begin
-        i := -4;
+        i := -1;
         j := 0;
-        while i <= 4 do
+        while i <= 1 do
+        begin
+            while j <= 1 do
             begin
-            while j <= 10 do
-                begin
                 read t[i,j];
                 j := j+1
             end;
-        i := i+1 
+            j := 0;
+        i := i+1;
         end;
 
-        i := -4;
+        i := -1;
         j := 0;
-        maximum := t[-4,0];
-        while i <= 4 do
+        maximum := t[-1,0];
+        while i <= 1 do
         begin
-            while j <= 10 do
+            while j <= 1 do
             begin
                 if t[i,j] > maximum then maximum := t[i,j];
                 j := j+1 
             end;
+            j := 0;
         i := i+1; 
         end;
 
+        write "le maximum est";
         write maximum;
     end
