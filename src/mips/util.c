@@ -447,11 +447,26 @@ void sauvegarde_element_tableau(quad q)
     if (eres->typedesc.type == TYPE_INT) // *q.op1 := x
     {
       fprintf(yyout, "lw $24, %d($sp)\n", eres->addr_pile);
-      fprintf(yyout, "sw $24, ($%d)\n", e1->reg);
+      fprintf(yyout, "move $25, $sp\n");
+      fprintf(yyout, "add $25, $25, $%d\n", e1->reg);
+      fprintf(yyout, "sw $24, ($25)\n");
     }
     else // *q.op1 := temp
     {
-      fprintf(yyout, "sw $%d, ($%d)\n", eres->reg, e1->reg);
+      if (q.res.for_tab == 1)
+      {
+        fprintf(yyout, "move $24, $sp\n");
+        fprintf(yyout, "add $24, $24, $%d\n", eres->reg);
+        fprintf(yyout, "move $25, $sp\n");
+        fprintf(yyout, "add $25, $25, $%d\n", e1->reg);
+        fprintf(yyout, "sw $24, ($25)\n");
+      }
+      else
+      {
+        fprintf(yyout, "move $25, $sp\n");
+        fprintf(yyout, "add $25, $25, $%d\n", e1->reg);
+        fprintf(yyout, "sw $%d, ($25)\n", eres->reg);
+      }
     }
   }
 }

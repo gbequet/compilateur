@@ -1,6 +1,8 @@
 .data
 newLine: .asciiz "\n"
 segFaultWarning: .asciiz "Segmentation fault"
+str_false: .asciiz "False"
+str_true: .asciiz "True"
 
 .text
 
@@ -8,7 +10,7 @@ SEGFAULT:
 li $v0, 4
 la $a0, segFaultWarning
 syscall
-j L36
+j L42
 
 
 POW:
@@ -25,151 +27,119 @@ EXIT_POW:
 jr $ra
 
 main:
-li $24, 1
-li $25, 2
-blt $24, $25, L4
-j L2
-L2:
-li $24, 3
-li $25, 4
-blt $24, $25, L4
-j L8
-L4:
+addi $sp, $sp, -24
+addi $sp, $sp, -4
+li $24, 0
+li $25, 0
+add $8, $24, $25
 li $24, 5
-li $25, 8
-blt $24, $25, L6
-j L8
-L6:
-.data
-str0: .asciiz "v"
-.text
-li $v0, 4
-la $a0, str0
-syscall
-li $v0, 4
-la $a0, newLine
-syscall
-j L9
+li $25, 1
+sub $9, $24, $25
+li $24, 6
+bge $9, $24, SEGFAULT
+li $24, 0
+blt $9, $24, SEGFAULT
+add $11, $8, $9
+li $24, 4
+mul $12, $11, $24
+li $24, 4
+add $13, $24, $12
+li $24, 4
+move $25, $sp
+add $25, $25, $13
+sw $24, ($25)
 L8:
-.data
-str1: .asciiz "f"
-.text
-li $v0, 4
-la $a0, str1
-syscall
-li $v0, 4
-la $a0, newLine
-syscall
-L9:
-li $24, 1
-li $25, 2
-blt $24, $25, L13
-j L11
-L11:
-li $24, 3
-li $25, 4
-blt $24, $25, L13
-j L17
-L13:
+li $24, 0
+li $25, 0
+add $14, $24, $25
 li $24, 5
-li $25, 8
-bgt $24, $25, L15
-j L17
-L15:
-.data
-str2: .asciiz "v"
-.text
-li $v0, 4
-la $a0, str2
-syscall
-li $v0, 4
-la $a0, newLine
-syscall
-j L18
-L17:
-.data
-str3: .asciiz "f"
-.text
-li $v0, 4
-la $a0, str3
-syscall
-li $v0, 4
-la $a0, newLine
-syscall
-L18:
-li $24, 1
 li $25, 2
-bgt $24, $25, L22
-j L20
-L20:
-li $24, 3
-li $25, 4
-blt $24, $25, L22
-j L26
-L22:
+sub $15, $24, $25
+li $24, 6
+bge $15, $24, SEGFAULT
+li $24, 0
+blt $15, $24, SEGFAULT
+move $8, $16
+add $8, $14, $15
+li $24, 4
+mul $9, $8, $24
+li $24, 4
+add $10, $24, $9
+li $24, 0
+li $25, 0
+add $11, $24, $25
 li $24, 5
-li $25, 8
-blt $24, $25, L24
-j L26
+li $25, 1
+sub $12, $24, $25
+li $24, 6
+bge $12, $24, SEGFAULT
+li $24, 0
+blt $12, $24, SEGFAULT
+add $14, $11, $12
+li $24, 4
+mul $15, $14, $24
+li $24, 4
+add $16, $24, $15
+move $8, $16
+move $24, $sp
+add $24, $24, $16
+lw $8, ($24)
+move $25, $sp
+add $25, $25, $10
+sw $9, ($25)
 L24:
-.data
-str4: .asciiz "v"
-.text
-li $v0, 4
-la $a0, str4
-syscall
-li $v0, 4
-la $a0, newLine
-syscall
-j L27
-L26:
-.data
-str5: .asciiz "f"
-.text
-li $v0, 4
-la $a0, str5
-syscall
-li $v0, 4
-la $a0, newLine
-syscall
-L27:
-li $24, 1
-li $25, 2
-bgt $24, $25, L31
-j L29
-L29:
-li $24, 3
-li $25, 4
-blt $24, $25, L31
-j L35
-L31:
+li $24, 0
+li $25, 0
+add $10, $24, $25
 li $24, 5
-li $25, 8
-bgt $24, $25, L33
-j L35
-L33:
-.data
-str6: .asciiz "v"
-.text
-li $v0, 4
-la $a0, str6
+li $25, 1
+sub $11, $24, $25
+li $24, 6
+bge $11, $24, SEGFAULT
+li $24, 0
+blt $11, $24, SEGFAULT
+add $13, $10, $11
+li $24, 4
+mul $14, $13, $24
+li $24, 4
+add $15, $24, $14
+move $24, $sp
+add $24, $24, $15
+lw $16, ($24)
+move $8, $16
+li $v0, 1
+move $a0, $16
 syscall
 li $v0, 4
 la $a0, newLine
 syscall
-j L36
-L35:
-.data
-str7: .asciiz "f"
-.text
-li $v0, 4
-la $a0, str7
+L33:
+li $24, 0
+li $25, 0
+add $9, $24, $25
+li $24, 5
+li $25, 2
+sub $10, $24, $25
+li $24, 6
+bge $10, $24, SEGFAULT
+li $24, 0
+blt $10, $24, SEGFAULT
+add $12, $9, $10
+li $24, 4
+mul $13, $12, $24
+li $24, 4
+add $14, $24, $13
+move $24, $sp
+add $24, $24, $14
+lw $15, ($24)
+li $v0, 1
+move $a0, $15
 syscall
 li $v0, 4
 la $a0, newLine
 syscall
 
-L36:
+L42:
 
 li $v0, 10
 syscall

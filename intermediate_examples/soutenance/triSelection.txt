@@ -1,8 +1,9 @@
 program p
-    var i,j,k,tmp,min : int;
+    var i,j,k,tmp1,tmp2,min : int;
     var t : array[0..5] of int;
 
     begin
+        write "Remplissez le tableau";
         i := 0;
         while (i <= 5) do
         begin
@@ -22,13 +23,16 @@ program p
             end;
             if (min <> i) then
             begin
-                tmp := t[i];
-                t[i] := t[min];
-                t[min] := tmp;
+                tmp1 := t[i];
+                tmp2 := t[min];
+                t[i] := tmp2;
+                t[min] := tmp1;
             end;
             i := i+1;
         end;
 
+
+        write "Le tableau trie";
         i := 0;
         while (i <= 5) do
         begin

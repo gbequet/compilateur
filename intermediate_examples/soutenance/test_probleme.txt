@@ -1,4 +1,5 @@
 program p
+    var tmp : int;
     var t : array[0..5] of int;
 
     begin
